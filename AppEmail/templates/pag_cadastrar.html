@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}Cadastrar{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/style_cadastrar.css') }}">
+{% endblock %}
+
+{% block content %}
+<h2>Cadastrar</h2>
+
+<div class="cadastrar-page">
+    <form class="formulario-cadastro" id="form-cadastro">
+        <div class="campo">
+            <label>CDC</label>
+            <input id="cdc" type="text" required>
+        </div>
+
+        <div class="campo">
+            <label>Descrição</label>
+            <input id="descricao" type="text" required>
+        </div>
+
+        <div class="campo">
+            <label>Nome</label>
+            <input id="nome" type="text" required>
+        </div>
+
+        <div class="campo">
+            <label>Email</label>
+            <input id="email" type="email" required>
+        </div>
+
+        <button type="submit">
+            <i class="bi bi-floppy"></i>
+            Salvar
+        </button>
+    </form>
+
+    <table class="tabela-cadastro">
+        <thead>
+            <tr>
+                <th>CDC</th>
+                <th>Descrição</th>
+                <th>Nome</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- dados -->
+        </tbody>
+    </table>
+
+    <div class="botoes-tabela">
+        <button type="button">
+            <i class="bi bi-pencil"></i>
+            Editar
+        </button>
+        <button type="button">
+            <i class="bi bi-person-x"></i>
+            Excluir
+        </button>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/cadastrar.js') }}"></script>
+{% endblock %}
