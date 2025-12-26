@@ -1,160 +1,218 @@
-/* =========================
-   TÍTULO DA PÁGINA
-========================= */
 
-.cadastrar-page h2 {
-    margin-bottom: 20px;
-    font-size: 20px;
-    color: #1e293b;
+h2{
+    color: rgb(111, 109, 109);
+    font-size: 25px;
 }
 
-
-/* =========================
-   FORMULÁRIO
-========================= */
-
-.formulario-cadastro {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+.form-cadastro {
     width: 100%;
+    max-width: 100%;
+    margin: 20px auto;
 
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    row-gap: 12px;
-
+    border: 1px solid rgb(201, 199, 199);
+    border-radius: 5px;
+    padding: 20px;
+    color: rgb(111, 109, 109);
 }
 
-.formulario-cadastro label {
-    font-size: 13px;
+.form-cadastro fieldset {
+        border: none;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+.form-cadastro legend {
+    font-size: 16px;
     font-weight: 600;
-    color: #475569;
+    color: rgb(90, 90, 90);
+    margin-bottom: 5px;
+}
+.campos-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
 }
 
-.formulario-cadastro input {
-    padding: 8px 10px;
-    border: 1px solid #cbd5e1;
-    border-radius: 4px;
-    font-size: 14px;
-}
-
-.formulario-cadastro input:focus {
-    outline: none;
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.3);
-}
-
-.formulario-cadastro button {
-    grid-column: span 2;
-    justify-self: flex-end;
-
-    display: flex;
-    align-items: center;
-    gap: 8px;
-
-    padding: 8px 18px;
-    background-color: #3bba41;
-    color: #ffffff;
-    border: none;
-    border-radius: 4px;
-    font-size: 14px;
-    cursor: pointer;
-}
-
-.formulario-cadastro button:hover {
-    background-color: #208d25;
-}
-
-.formulario-cadastro .campo {
+.campo{
     display: flex;
     flex-direction: column;
-}
-
-.formulario-cadastro label {
-    font-size: 13px;
-    font-weight: 600;
-    color: #475569;
-    margin-bottom: 4px;
-}
-
-.formulario-cadastro input {
-    padding: 8px 10px;
-    border: 1px solid #cbd5e1;
-    border-radius: 4px;
     font-size: 14px;
 }
 
-/* =========================
-   TABELA
-========================= */
-
-.tabela-cadastro {
-    width: 100%;
-    margin-top: 32px;
-    border-collapse: collapse;
-    background-color: #ffffff;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
-}
-
-.tabela-cadastro thead {
-    background-color: #f1f5f9;
-}
-
-.tabela-cadastro th {
-    padding: 10px;
-    text-align: left;
+.campo input {
+    padding: 7px;
+    border: 1px solid rgb(201, 199, 199);
+    border-radius: 5px;
     font-size: 13px;
-    font-weight: 600;
-    color: #334155;
+
+    transition: 
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
-.tabela-cadastro td {
-    padding: 10px;
-    font-size: 13px;
-    color: #475569;
-    border-top: 1px solid #e2e8f0;
+.campo input:hover {
+    border-color: #0d6efd;
 }
 
-.tabela-cadastro tbody tr:hover {
-    background-color: #f8fafc;
+.campo input:focus {
+    outline: none;
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.15);
 }
 
-
-/* =========================
-   BOTÕES DA TABELA
-========================= */
-
-.botoes-tabela {
-    margin-top: 12px;
+.acoes-form {
     display: flex;
+    justify-content: flex-end;
+    margin-top: 15px;
+    border-radius: 4px;
     gap: 10px;
 }
 
-.botoes-tabela button {
-    padding: 8px 14px;
-    font-size: 13px;
-    border-radius: 4px;
+.btn-salvar {
+    padding: 8px 15px;
+    font-size: 12px;
     cursor: pointer;
+
+    background-color: #13d35d;
+    color: white;
     border: none;
+    border-radius: 4px;
 }
 
-.botoes-tabela button:first-child {
-    background-color: #f59e0b;
-    color: #ffffff;
+.btn-limpar {
+    padding: 8px 15px;
+    font-size: 12px;
+    cursor: pointer;
+
+    background-color: #2368ad;
+    color: white;
+    border: none;
+    border-radius: 4px;
 }
 
-.botoes-tabela button:first-child:hover {
-    background-color: #d97706;
+.table-cadastros {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 20px;
+    font-size: 14px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
 }
 
-.botoes-tabela button:last-child {
-    background-color: #ef4444;
-    color: #ffffff;
+/* Cabeçalho */
+.table-cadastros thead {
+    background-color: #f1f5f9;
 }
 
-.botoes-tabela button:last-child:hover {
-    background-color: #dc2626;
+.table-cadastros thead th:hover {
+    color: #2563eb;
 }
+
+.table-cadastros thead th {
+    padding: 14px 16px;
+    text-align: left;
+    font-weight: 600;
+    color: #334155;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    
+    cursor: pointer;
+    user-select: none;
+    user-select: nowrap;
+}
+
+.sort-icon {
+    margin-left: 6px;
+    font-size: 0.9em;
+    color: #94a3b8;
+    transition: color 0.2s ease;
+}
+
+.table-cadastros thead th:hover .sort-icon {
+    color: #2563eb;
+}
+
+/* Corpo */
+.table-cadastros tbody td {
+    padding: 14px 16px;
+    border-top: 1px solid #e2e8f0;
+    color: #475569;
+    font-size: 12px;
+}
+
+/* Hover elegante */
+.table-cadastros tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.table-cadastros tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+/* Última linha sem borda extra */
+.table-cadastros tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Centralizar colunas específicas (se quiser) */
+.table-cadastros td:nth-child(1) {
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.table-cadastros tbody tr:nth-child(even) {
+    background-color: #fcfcfd;
+}
+
+.col-acoes {
+    width: 100px;
+    text-align: center;
+}
+
+.acoes-linha {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.acoes i {
+    cursor: pointer;
+    color: #dc3545;
+    font-size: 1.1rem;
+    transition: transform 0.2s, color 0.2s;
+}
+
+.acoes i:hover {
+    color: #a71d2a;
+    transform: scale(1.2);
+}
+
+/* Botões ícone */
+.btn-icon {
+    border: none;
+    background: transparent;
+    padding: 6px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #64748b;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    font-size: 14px;
+}
+
+.btn-icon:hover {
+    background-color: #f1f5f9;
+}
+
+/* Cores sem exagero */
+.btn-editar:hover {
+    color: #2563eb;
+}
+
+.btn-excluir:hover {
+    color: #dc2626;
+}
+

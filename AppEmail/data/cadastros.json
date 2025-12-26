@@ -1,0 +1,14 @@
+[
+    {
+        "cdc": "GBE",
+        "descricao": "Gerência de Benefícios",
+        "nome": "Juliana",
+        "email": "gbe@postalis.org.br"
+    },
+    {
+        "cdc": "GCO",
+        "descricao": "Gerência de Controladoria",
+        "nome": "Vinícius",
+        "email": "gco@postalis.org.br"
+    }
+]

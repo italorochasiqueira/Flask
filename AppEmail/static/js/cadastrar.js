@@ -1,26 +1,53 @@
-function iniciarCadastro() {
-    const form = document.querySelector("#form-cadastro");
-    if (!form) return;
+document.querySelectorAll(".table-cadastros th[data-col]").forEach((th) => {
+    let asc = true;
 
-    form.addEventListener("submit", e => {
-        e.preventDefault();
+    th.addEventListener("click", () => {
+        const table = th.closest("table");
+        const tbody = table.querySelector("tbody");
+        const rows = Array.from(tbody.querySelectorAll("tr"));
+        const index = th.dataset.col;
 
-        const cadastro = {
-            cdc: document.querySelector("#cdc").value,
-            descricao: document.querySelector("#descricao").value,
-            nome: document.querySelector("#nome").value,
-            email: document.querySelector("#email").value
-        };
-
-        fetch("/salvar-cadastro", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(cadastro)
-        })
-        .then(res => res.json())
-        .then(() => {
-            alert("Cadastro salvo com sucesso!");
-            form.reset();
+        // Resetar ícones dos outros cabeçalhos
+        document.querySelectorAll(".sort-icon").forEach(icon => {
+            icon.className = "bi bi-arrow-down-up sort-icon";
         });
+
+        rows.sort((a, b) => {
+            const A = a.children[index].innerText.toLowerCase();
+            const B = b.children[index].innerText.toLowerCase();
+            return asc ? A.localeCompare(B) : B.localeCompare(A);
+        });
+
+        // Atualizar ícone do cabeçalho clicado
+        const icon = th.querySelector(".sort-icon");
+        icon.className = asc
+            ? "bi bi-arrow-down sort-icon"
+            : "bi bi-arrow-up sort-icon";
+
+        asc = !asc;
+        rows.forEach(tr => tbody.appendChild(tr));
     });
-}
+});
+
+document.addEventListener("click", function (e) {
+    if (e.target.classList.contains("btn-excluir")) {
+        const cdc = e.target.dataset.cdc;
+
+        
+
+        if (!confirm("Deseja realmente excluir este registro?")) return;
+
+        fetch(`/cadastro/excluir/${cdc}`, {
+            method: "DELETE"
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                e.target.closest("tr").remove();
+            } else {
+                alert("Erro ao excluir");
+            }
+        })
+        .catch(() => alert("Erro de comunicação com o servidor"));
+    }
+});
