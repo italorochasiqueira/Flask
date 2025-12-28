@@ -78,6 +78,13 @@ h2{
     color: white;
     border: none;
     border-radius: 4px;
+
+    transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.btn-salvar:hover {
+    background-color: #10b84f;
+    transform: translateY(-1px);
 }
 
 .btn-limpar {
@@ -88,7 +95,19 @@ h2{
     background-color: #2368ad;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
+
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    transition:
+        background-color 0.2s ease,
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.btn-limpar:hover {
+    background-color: #1d5a96;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .table-cadastros {

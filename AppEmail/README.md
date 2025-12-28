@@ -1,0 +1,6 @@
+
+
+BIBLIOTECAS
+ - Flask
+ - Pywin32
+ 

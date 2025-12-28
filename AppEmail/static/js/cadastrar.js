@@ -30,14 +30,33 @@ document.querySelectorAll(".table-cadastros th[data-col]").forEach((th) => {
 });
 
 document.addEventListener("click", function (e) {
+
+    const btn = e.target.closest(".btn-editar");
+    if (!btn) return;
+
+    // Preenche o formulário
+    document.getElementById("id_cadastro").value = btn.dataset.id;
+    document.getElementById("cdc").value = btn.dataset.cdc;
+    document.getElementById("descricao").value = btn.dataset.descricao;
+    document.getElementById("nome").value = btn.dataset.nome;
+    document.getElementById("email").value = btn.dataset.email;
+
+    // Muda botão salvar
+    const btnSalvar = document.querySelector(".btn-salvar-edit");
+    btnSalvar.innerHTML = `<i class="bi bi-check2"></i> Atualizar`;
+    btnSalvar.classList.add("modo-edicao");
+
+});
+
+document.addEventListener("click", function (e) {
     if (e.target.classList.contains("btn-excluir")) {
-        const cdc = e.target.dataset.cdc;
+        const id = e.target.dataset.id;
 
         
 
         if (!confirm("Deseja realmente excluir este registro?")) return;
 
-        fetch(`/cadastro/excluir/${cdc}`, {
+        fetch(`/cadastro/excluir/${id}`, {
             method: "DELETE"
         })
         .then(response => response.json())
@@ -51,3 +70,17 @@ document.addEventListener("click", function (e) {
         .catch(() => alert("Erro de comunicação com o servidor"));
     }
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const btnLimpar = document.querySelector(".btn-limpar");
+
+    if (!btnLimpar) return;
+
+    btnLimpar.addEventListener("click", () => {
+        document.querySelector("#cdc").value = "";
+        document.querySelector("#descricao").value = "";
+        document.querySelector("#nome").value = "";
+        document.querySelector("#email").value = "";
+    });
+});
+

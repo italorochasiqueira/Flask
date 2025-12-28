@@ -15,6 +15,7 @@
 <section class="cadastro-page">
 
     <form class="form-cadastro" method="post">
+        <input type="hidden" id="id_cadastro" name="id">
         <fieldset>
             
             <legend>Dados para envio dos resumos</legend>
@@ -41,7 +42,7 @@
             </div>
         </fieldset>
         <div class="acoes-form">
-            <button type="submit" class="btn-limpar">
+            <button type="button" class="btn-limpar">
                 <i class="bi bi-eraser"></i>
                 Limpar
             </button>
@@ -86,13 +87,19 @@
                             <td>{{ item['nome'] }}</td>
                             <td>{{ item['email'] }}</td>
                             <td class="acoes-linha">
-                                <button class="btn-icon btn-editar" title="Editar">
+                                <button class="btn-icon btn-editar"
+                                        title="Editar"
+                                        data-id="{{ item.id }}"
+                                        data-cdc="{{ item.cdc }}"
+                                        data-descricao="{{ item.descricao }}"
+                                        data-nome="{{ item.nome }}"
+                                        data-email="{{ item.email }}">
                                     <i class="bi bi-pencil"></i>
                                 </button>
                                 <button class="btn-icon btn-excluir" 
                                         title="Excluir" 
-                                        data-cdc="{{ item.cdc }}"
-                                        {% if not item.cdc %}disabled{% endif %}>
+                                        data-id="{{ item.id }}"
+                                        {% if not item.id %}disabled{% endif %}>
                                     <i class="bi bi-trash"></i>
                                 </button>
                             </td>

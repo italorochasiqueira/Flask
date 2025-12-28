@@ -1,14 +1,9 @@
 [
     {
-        "cdc": "GBE",
-        "descricao": "Gerência de Benefícios",
-        "nome": "Juliana",
-        "email": "gbe@postalis.org.br"
-    },
-    {
         "cdc": "GCO",
         "descricao": "Gerência de Controladoria",
         "nome": "Vinícius",
-        "email": "gco@postalis.org.br"
+        "email": "gco@postalis.org.br",
+        "id": "ef1a103b-bf05-4b46-ba4f-bda8a6767fb7"
     }
 ]

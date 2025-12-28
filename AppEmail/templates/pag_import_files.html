@@ -3,7 +3,7 @@
 {% block title %}Importar Arquivos{% endblock %}
 
 {% block extra_css %}
-<!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/style_cadastrar.css') }}"> -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style_import_files.css') }}">
 
 {% endblock %}
 
@@ -13,5 +13,80 @@
     Importar Arquivos
 </h2>
 
+<section class="form-import-files">
+    <form class="form-import" 
+        method="post" 
+        enctype="multipart/form-data"
+        action="{{ url_for('importar.importar_arquivos') }}">
+        <fieldset>
+            <legend>
+                <i class="bi bi-search"></i>
+                Selecione os arquivos para importar
+            </legend>
+            <div class="campo">
+                <label for="file_input">Arquivos PDF</label>
+                <input id="file_input" name="file_input" type="file" accept=".pdf" multiple required>
+            </div>
+            <div class="acoes-form">
+                <button type="submit" class="btn-importar">
+                    <i class="bi bi-file-earmark-arrow-up-fill"></i>
+                    Preparar Importação
+                </button>
+                <button type="button" class="btn-enviar-email" disabled>
+                    <i class="bi bi-envelope-arrow-up"></i>
+                    Preparar E-mail
+                </button>
+            </div>
+        </fieldset>
+    </form>
+</section>
+
+{% if resultados %}
+<section class="resultado-importacao">
+
+    <h3>Resultado da Importação</h3>
+
+    <table class="tabela-importacao">
+        <thead>
+            <tr>
+                <th>Arquivo</th>
+                <th>CDC</th>
+                <th>Status</th>
+                <th>Observação</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {# ===== Arquivos processados ===== #}
+            {% for item in resultados.processados %}
+            <tr class="linha-sucesso">
+                <td>{{ item.arquivo }}</td>
+                <td>{{ item.cdc }}</td>
+                <td>
+                    <i class="bi bi-check-circle-fill status-ok"></i>
+                    Importado
+                </td>
+                <td>—</td>
+            </tr>
+            {% endfor %}
+
+            {# ===== Arquivos com erro ===== #}
+            {% for item in resultados.erros %}
+            <tr class="linha-erro">
+                <td>{{ item.arquivo }}</td>
+                <td>{{ item.cdc or "-" }}</td>
+                <td>
+                    <i class="bi bi-x-circle-fill status-erro"></i>
+                    Rejeitado
+                </td>
+                <td>{{ item.motivo }}</td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+</section>
+{% endif %}
 
 {% endblock %}
